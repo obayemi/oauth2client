@@ -24,6 +24,7 @@ __authors__ = [
 import base64
 import hmac
 import time
+import sys
 
 import six
 from oauth2client import util
@@ -113,6 +114,6 @@ def validate_token(key, token, user_id, action_id="", current_time=None):
 
   # Perform constant time comparison to avoid timing attacks
   different = 0
-  for x, y in zip(bytearray(token), bytearray(expected_token)):
+  for x, y in zip(bytearray(token, sys.getdefaultencoding()), bytearray(expected_token)):
     different |= x ^ y
   return not different
