@@ -122,7 +122,6 @@ class Storage(BaseStorage):
                           overwrite any existing stored credentials.
     """
     args = {self.key_name: self.key_value}
-    print("args: ", args)
 
     if overwrite:
       entity, unused_is_new = self.model_class.objects.get_or_create(**args)
